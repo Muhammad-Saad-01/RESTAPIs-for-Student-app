@@ -58,7 +58,7 @@ router.get('/assignments/me', auth, async (req, res) => {
                 sort
             }
         }).execPopulate()
-        //console.log(req.user.MyAssignments, r)
+
         res.send(req.user.MyAssignments)
 
     } catch (error) {

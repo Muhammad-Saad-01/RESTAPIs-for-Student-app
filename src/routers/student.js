@@ -2,10 +2,7 @@ const express = require('express')
 const Student = require('../models/student')
 const auth = require('../middleware/auth')
 
-
 const router = new express.Router()
-
-
 
 //save a student
 router.post('/students', async (req, res) => {
@@ -24,7 +21,7 @@ router.post('/students', async (req, res) => {
 
 })
 
-//user login 
+//student login 
 router.post('/students/login', async (req, res) => {
 
     try {

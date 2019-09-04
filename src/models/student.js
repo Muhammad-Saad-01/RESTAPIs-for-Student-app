@@ -54,11 +54,13 @@ const studentSchema = mongoose.Schema({
 }, {
     timestamps: true
   })
+// virtual Relation to populate for Student , courses
 studentSchema.virtual('MyCourses', {
   ref: 'Course',
   localField: '_id',
   foreignField: 'stuID'
 })
+// virtual Relation to populate for student , assignments
 studentSchema.virtual('MyAssignments', {
   ref: 'Assignment',
   localField: '_id',
@@ -76,7 +78,6 @@ studentSchema.methods.toJSON = function () {
 
   return studentObject
 }
-
 
 //auth
 studentSchema.methods.generateAuthToken = async function () {
@@ -123,15 +124,9 @@ studentSchema.pre('save', async function (next) {
 studentSchema.pre('remove', async function (next) {
   const student = this
 
-  console.log('in student remove middleware ...')
-  console.log('   step 1 done ...')
-
-
   await Assignmet.deleteMany({ stuID: student._id })
   await Course.deleteMany({ stuID: student._id })
 
-
-  console.log('   step 2 done ... ,method finished ')
   next()
 })
 

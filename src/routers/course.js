@@ -37,7 +37,7 @@ router.get('/courses/me', auth, async (req, res) => {
         sort[parts[0]] = parts[1] === 'desc' ? -1 : 1
     }
     try {
-        console.log(req.user)
+
         await req.user.populate({
             path: 'MyCourses',
             match,
@@ -47,7 +47,7 @@ router.get('/courses/me', auth, async (req, res) => {
                 sort
             }
         }).execPopulate()
-        console.log(req.user.MyCourses)
+
         res.send(req.user.MyCourses)
 
     } catch (error) {
@@ -132,38 +132,30 @@ router.patch('/courses/:id', auth, async (req, res) => {
     }
 
     try {
-        // const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+
         const course = await Course.findOne({ _id: req.params.id, stuID: req.user._id })
-        console.log('step 1... ', course)
+
         if (!course) {
             return res.status(404).send()
         }
 
         updates.forEach((update) => course[update] = req.body[update])
 
-        console.log('step 2... ', course)
-
-
         if (req.body['completed'] === "true") {
             course['progress'] = 100
-            console.log('step 3 before... ', course)
+
             await Course.courseComplete(req.params.id)
-            console.log('step 3 after ... ', course)
+
         }
         if (req.body['progress'] === "100") {
             course['completed'] = true
-            console.log('step 4 before... ', course)
+
             await Course.courseComplete(req.params.id)
-            console.log('step 4 after ... ', course)
+
         }
 
-        console.log('step 5 before ... ', course)
         await Course.courseComplete(req.params.id)
-        console.log('step 5 after ... ', course)
         await course.save()
-        console.log('step 6 after ... ', course)
-
-
         res.send(course)
     } catch (e) {
         res.status(400).send(e)
