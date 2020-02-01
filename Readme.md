@@ -10,12 +10,13 @@ JWT_SECRET is JSON web token encoding string
 
 ## Installation instructions
 
-    node version 12.5
+    node version 12.5 or higher
 
-# > npm install
+### Install
+> npm install
 
-# For Dev mode
+#### For Dev mode
 > npm run dev
 
-# For Run Mode
+#### For Run Mode
 > npm run start
