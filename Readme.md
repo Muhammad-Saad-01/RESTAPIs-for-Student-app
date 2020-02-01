@@ -1,5 +1,5 @@
 # Student Enrollment app Demo
-
+> https://documenter.getpostman.com/view/8654587/SVfUsSXe
 ## Configuration
 
 make config folder and then dev.env and write needed data for the following
@@ -12,10 +12,10 @@ JWT_SECRET is JSON web token encoding string
 
     node version 12.5
 
-> npm install
+# > npm install
 
-> > npm run dev
+# For Dev mode
+> npm run dev
 
-> or
-
-> > npm run start
+# For Run Mode
+> npm run start
