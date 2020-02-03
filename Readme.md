@@ -1,5 +1,7 @@
 # Student Enrollment app Demo
 > https://documenter.getpostman.com/view/8654587/SVfUsSXe
+
+Server Side For Student Enrollment Application using NodeJS
 ## Configuration
 
 make config folder and then dev.env and write needed data for the following
