@@ -1,5 +1,5 @@
-# Student Enrollment app Demo
-   Server Side For Student Enrollment Application using NodeJS
+# Student Enrollment App Demo
+   Server Side For Student Enrollment Application using NodeJS Express and mongoDB
 
 ---
 ## Requirements
